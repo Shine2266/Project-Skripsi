@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <title>Test Project</title>
+</head>
+<style>
+  #curo {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #salam {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  #top {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+
+  body {
+    font-family: 'poppins', 'sans-serif';
+  }
+</style>
+<style>
+  /* Full-width input fields */
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    font-family: 'poppins', 'sans-serif';
+  }
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+
+  @-webkit-keyframes animatezoom {
+    from {
+      -webkit-transform: scale(0)
+    }
+
+    to {
+      -webkit-transform: scale(1)
+    }
+  }
+
+  @keyframes animatezoom {
+    from {
+      transform: scale(0)
+    }
+
+    to {
+      transform: scale(1)
+    }
+  }
+
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+</style>
+
+<style>
+  #hoverme {
+  background: #70c48f;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.visible {
+  animation: movein 0.5s ease forwards, moveout 0.5s 3s ease forwards;
+}
+
+#notif {
+  width: 300px;
+  height: 100px;
+  background: #70c48f;
+  color: white;
+  border-radius: 3px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 100px;
+  left: -300px;
+}
+
+/*#notif {
+  left: 10px;
+  opacity: 0;
+}*/
+
+@keyframes movein {
+  from { left: -300px; }
+  to   { left: 10px; }
+}
+/* 
+@keyframes moveout {
+  from { left: 10px; }
+  to   { left: -300px; }
+}
+
+/*@keyframes movein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes moveout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}*/
+
+</style>
+
+<body>
+  <div class="container-fluid" id="curo">
+
+    <!-- Curosel -->
+    <section>
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/Frame 1.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Frame 2.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Frame 3.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!-- end -->
+
+
+    <!-- content Greeting -->
+    <section>
+      <div class="container" id="salam">
+        <div class="row">
+          <center>
+            <h3><b>Menu</b></h3>
+          </center>
+        </div>
+      </div>
+    </section>
+    <!-- end -->
+
+    <!-- Top Sell -->
+    <section class="py-0">
+      <div class="container">
+        <div class="row gx-4 gx-lg-5 row-cols-4 row-cols-md-3 row-cols-xl-5 justify-content-center">
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Avocado.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Avocado</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Choco Avocado.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Choco Avocado</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-fire px-1"></span>Best Seller</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Choco Dark.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Choco Dark</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Coffee Creamy Latte.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Coffee Creamy Latte</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="	glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Greentea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Greentea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Hazelnut.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Hazelnut</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Lemon Greentea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Lemon Greentea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-fire px-1"></span>Best Seller</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Lemon Thai Tea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Lemon Thai Tea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Milo Greentea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Milo Greentea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Milo Thai Tea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Milo Thai Tea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Milosaurus.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Milosaurus</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Redvelvet.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Redvelvet</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Taro.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Taro</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-fire px-1"></span>Best Seller</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Thai Tea.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Thai Tea</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100" style="border: none;" id="top">
+              <!-- Sale badge-->
+              <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><span
+                  class="glyphicon glyphicon-ok-circle px-1"></span>Ready</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="assets/Salinan dari Vanila Blue.png" alt="zam zam time" />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">Vanila Blue</h5>
+                  <!-- Product price-->
+                  Imut - Rp. 6.000
+                  <br>
+                  Ndut - Rp. 12.000
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center py-3">
+                      <a class="btn btn-success mt-auto btn-block"
+                        onclick="document.getElementById('id01').style.display='block'" class="close"><span
+                          class="glyphicon glyphicon-shopping-cart px-2"></span>Buy
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end -->
+
+    <!-- Order Button -->
+    <section>
+      <br>
+      <div class="container px-2">
+        <div class="row">
+          <div class="col-sm-4">
+            <a href="index.html"><button type="button" class="btn btn-danger btn-lg w-auto">Cancel Order</button></a>
+          </div>
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <a href="detail.html"><button type="button" class="btn btn-success btn-lg btn-block active"><span
+                  class="glyphicon glyphicon-check px-1"></span>Checklist</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br><br><br>
+
+  </div>
+  <!-- end -->
+
+  <!-- Modal -->
+  <section>
+    <div id="id01" class="modal">
+
+      <!-- Product section-->
+      <section>
+        <div class="container px-4 px-lg-5 my-5 bg-light modal-content animate">
+          <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6 text-center"><img class="card-img-top mb-5 mb-md-0 w-50"
+                src="assets/Salinan dari Thai Tea.png" alt="zamzam" /></div>
+            <div class="col-md-6">
+              <div class="small mb-1"></div>
+              <h1 class="display-5 fw-bolder">Thai Tea</h1>
+              <div>
+                <span>Zam Zam Time Thai Tea Product</span>
+              </div>
+              <h5><b>6k 12k</b></h5>
+              <br>
+              <h5><b>Cup Size :</b></h5>
+              <table>
+                <tr>
+                  <td style="padding-right: 50px;"><input id="Imut" type="checkbox" value="1"
+                      style="height: 15px; width: 15px;" name="fooby[1][]" /><label for="chkMango"
+                      style="padding-left: 10px; font-size: medium;">Cup Imut</label>
+                  </td>
+
+                  <td><input id="Ndut" type="checkbox" value="1" style="height: 15px; width: 15px;"
+                      name="fooby[1][]" /><label for="chkApple" style="padding-left: 10px; font-size: medium;">Cup
+                      Ndut</label></td>
+                </tr>
+              </table>
+              <h5 style="padding-top: 10px;"><b>Topping :</b></h5>
+              <table>
+                <tr>
+                  <td style="padding-right: 70px;"><input id="Imut" type="checkbox" value="1"
+                      style="height: 15px; width: 15px;" /><label for="chkMango"
+                      style="padding-left: 10px; font-size: medium;">Bobba</label>
+                  </td>
+
+                  <td><input id="Ndut" type="checkbox" value="1" style="height: 15px; width: 15px;" /><label
+                      for="chkApple" style="padding-left: 10px; font-size: medium;">Oat</label></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td>
+                    <h5 style="padding-top: 10px;"><b>Count :</b></h5>
+                  </td>
+
+                  <td><!-- count -->
+                    <div class="container-fluid">
+                      <div class="qty-container">
+                        <button class="qty-btn-minus btn-success btn-cornered mr-1" type="button"><i
+                            class="glyphicon glyphicon-minus px-1"></i></button>
+                        <input type="text" name="qty" value="1" class="input-qty input-cornered" />
+                        <button class="qty-btn-plus btn-success btn-cornered ml-1" type="button"><i
+                            class="glyphicon glyphicon-plus px-1"></i></button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <br><br>
+              <table>
+                <tr>
+                  <td><button type="button" onclick="document.getElementById('id01').style.display='none'"
+                      class="cancelbtn btn btn-danger btn-lg"><span class="glyphicon glyphicon-chevron-left px-1"></span>Back</button></td>
+                  <td style="padding-left: 300px;"><button id="additem" type="button"
+                      class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus px-1"></span>Add</button></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    <div id="notif"><span class="glyphicon glyphicon-shopping-cart px-2"></span>Succses Add to Cart</div>
+  </section>
+  
+  <!-- end -->
+
+  <!-- footer -->
+  <footer class="text-center text-white bg-light">
+    <!-- Copyright -->
+    <div class="text-left text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Zam Zam Time
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- end -->
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <script>
+    var buttonPlus = $(".qty-btn-plus");
+    var buttonMinus = $(".qty-btn-minus");
+
+    var incrementPlus = buttonPlus.click(function () {
+      var $n = $(this)
+        .parent(".qty-container")
+        .find(".input-qty");
+      $n.val(Number($n.val()) + 1);
+    });
+
+    var incrementMinus = buttonMinus.click(function () {
+      var $n = $(this)
+        .parent(".qty-container")
+        .find(".input-qty");
+      var amount = Number($n.val());
+      if (amount > 0) {
+        $n.val(amount - 1);
+      }
+    });
+  </script>
+
+  <script>
+    // the selector will match all input controls of type :checkbox
+    // and attach a click event handler 
+    $("input:checkbox").on('click', function () {
+      // in the handler, 'this' refers to the box clicked on
+      var $box = $(this);
+      if ($box.is(":checked")) {
+        // the name of the box is retrieved using the .attr() method
+        // as it is assumed and expected to be immutable
+        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+        // the checked state of the group/box on the other hand will change
+        // and the current value is retrieved using .prop() method
+        $(group).prop("checked", false);
+        $box.prop("checked", true);
+      } else {
+        $box.prop("checked", false);
+      }
+    });
+  </script>
+  <script>
+    
+    var slideout = document.getElementById('notif');
+
+    additem.onclick = function() {
+      slideout.classList.toggle('visible');
+    };
+  </script>
+ 
+</body>
+
+</html>
